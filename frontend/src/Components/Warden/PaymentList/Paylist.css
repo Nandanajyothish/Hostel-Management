@@ -1,0 +1,52 @@
+/* AttendenceList.css */
+
+.pay-list-container {
+    margin: 20px;
+  }
+  
+  .pay-table {
+    width: 80%; /* Set a fixed or percentage-based width */
+    border-collapse: collapse;
+    margin-top: 10%;
+    margin-left: 10%;
+  }
+  
+  .pay-name-header,
+  .payp-name-header,
+  .amount-name-header {
+    background-color: #045331;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px;
+    
+  }
+  
+  .pay-name-cell,
+  .payp-name-cell,
+   .amount-name-cell{
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px; /* Adjust font size */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  @media (max-width: 600px) {
+    .pay-table {
+      width: 90%; 
+    }
+  
+    .pay-name-header,
+    .payp-name-header,
+    .amount-name-header,
+    .pay-name-cell,
+    .payp-name-cell ,
+    .amount-name-cell{
+      font-size: 12px; 
+       
+    }
+  
+  }
+  

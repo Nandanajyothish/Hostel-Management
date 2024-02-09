@@ -1,0 +1,49 @@
+.unotify-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the cards horizontally */
+  gap: 20px;
+  padding: 20px; /* Add padding to the container */
+  margin-top: 10%;
+}
+
+.unotify-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  margin: 10px; /* Add margin to each card for spacing */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.unotify-card:hover {
+  transform: scale(1.05);
+}
+
+.unotify-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.unotify-card p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.unotify-card p:last-child {
+  color: #888;
+  font-size: 12px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .unotify-container {
+      margin-left: 5%; /* Adjust margin for smaller screens */
+  }
+  
+  .unotify-card {
+      width: calc(50% - 20px); /* Two cards per row with spacing */
+  }
+}

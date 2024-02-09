@@ -1,0 +1,99 @@
+/* Notify.css */
+.notification-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.notification-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  justify-content: center;
+}
+
+.notification-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 300px; /* Set your preferred width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.notification-card:hover {
+  transform: scale(1.05);
+}
+
+.notification-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.notification-card p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.notification-card p:last-child {
+  color: #932222;
+  font-size: 12px;
+}
+.notification-card button {
+  background-color: #07442b; 
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+
+.notification-card button:hover {
+  background-color: #08826c; 
+}
+
+.not-form {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.not-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.not-button {
+  background-color: rgb(6, 114, 78);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.not-button:hover{
+  background-color: #08826c;
+}
+
+@media only screen and (max-width: 600px) {
+  .notification-card {
+    max-width: 100%;
+  }
+
+  .not-form {
+    max-width: 100%;
+  }
+}

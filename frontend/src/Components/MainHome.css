@@ -1,0 +1,45 @@
+/* MainHome.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(''); 
+  background-size: cover;
+  background-position: center;
+}
+
+.home-container {
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.8); */
+}
+
+.home-buttons {
+  /* background-color: #a0af4c; */
+  /* color: white; */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* .home-buttons:hover {
+  background-color: #45a049;
+} */
+
+@media only screen and (max-width: 600px) {
+  .home-container {
+    max-width: 100%;
+  }
+
+  .home-buttons {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+  }
+}

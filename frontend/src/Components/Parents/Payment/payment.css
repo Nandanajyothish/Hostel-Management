@@ -1,0 +1,39 @@
+/* Payment.css */
+
+.payment-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .payment-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  .payment-button {
+    background-color: #025c51;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .payment-button:hover {
+    background-color: #04886b;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .input-field {
+      width: calc(100% - 20px);
+    }
+  }
+  
