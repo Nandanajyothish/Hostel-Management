@@ -5,7 +5,7 @@ import WardenNav from '../../Components/Warden/NavWarden/WardenNav';
 const WardenFeesListPage = () => {
   return (
     <div>
-        <WardenNav/>
+        <WardenNav/><br/><br/><br/>
       <PaymentList/>
     </div>
   );

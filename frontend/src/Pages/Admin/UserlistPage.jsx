@@ -5,7 +5,7 @@ import Navbar from '../../Components/Admin/NavBar/Navbar';
 const UserlistPage = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar/><br/><br/><br/>
       <UserList/>
     </div>
   );

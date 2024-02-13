@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
 import "./Parentreg.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getUser, parentSignUp } from "../../../Service/ParentApi";
+import { parentSignUp } from "../../../Service/ParentApi";
 
 
 const validationSchema = Yup.object().shape({
@@ -26,18 +26,11 @@ const validationSchema = Yup.object().shape({
     [Yup.ref("password"), null],
     "Passwords must match"
   ),
-  rollno: Yup.number()
-    .required("Roll Number is required")
-    .positive("Roll Number must be positive")
-    .integer("Roll Number must be an integer"),
-    studentname: Yup.string()
-    .required("Student Name is required")
-    .min(4, "Student name must be at least 4 characters")
-    .max(15, "Student name cannot be more than 15 characters"),
-  })
+});
+
 
 const ParentRegister = () => {
-  const [users,setUsers]=useState([])
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -45,11 +38,11 @@ const ParentRegister = () => {
       phone: "",
       password: "",
       confirmPassword: "",
-      selectedRollnos: [],
+      
       
     },
     validationSchema: validationSchema,
-    onSubmit: async (values,{setSubmitting}) => {
+    onSubmit: async (values) => {
       try {
         console.log('submitting form with values',values)
         await parentSignUp(values);
@@ -60,23 +53,10 @@ const ParentRegister = () => {
         console.error("Error registering:", error.message);
         toast.error("Error registering");
       }
-      finally{
-        setSubmitting(false)
-      }
+     
     },
   });
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await getUser();
-        setUsers(response.data || []); // Assuming the API response contains user data
-      } catch (error) {
-        console.error("Error fetching users:", error.message);
-      }
-    };
 
-    fetchUsers();
-  }, []);
   return (
     <div>
       <div>
@@ -114,22 +94,9 @@ const ParentRegister = () => {
                 {formik.touched.email && formik.errors.email && (
                   <div className="error-message">{formik.errors.email}</div>
                 )}
-                  {/* Student Roll Number */}
                   
-      <select
-        name="selectedRollnos" // Changed from 'rollno' to 'selectedRollnos'
-        value={formik.values.selectedRollnos}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        multiple
-      >
-        <option value="" label="Select Student" />
-        {users.map((user) => (
-          <option key={user.RollNumber} value={user.RollNumber}>
-            {user.username} - {user.RollNumber}
-          </option>
-        ))}
-      </select><br/>
+                  
+
 
                 <label>Contact No</label>
                 <input

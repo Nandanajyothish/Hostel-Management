@@ -9,6 +9,7 @@ import ParentNotificationPage from '../Pages/Parent/ParentNotificationPage'
 import ParentHomePage from '../Pages/Parent/ParentHomePage'
 
 import PaymentPage from '../Pages/Parent/PaymentPage'
+import PaymentRedirect from '../Components/Parents/Payment/PaymentRedirect'
 
 
 
@@ -23,6 +24,7 @@ const ParentRouter = () => {
                 <Route path='/notify' element={<ParentNotificationPage/>}/>
                 <Route path='/home' element={<ParentHomePage/>}/>
                 <Route path='/payment' element={<PaymentPage/>}/>
+                <Route path='/redirect' element={<PaymentRedirect/>}/>
                 {/* <Route path='/paydetails' element={<PaymentDetailsPage/>}/> */}
                 
             </Routes>

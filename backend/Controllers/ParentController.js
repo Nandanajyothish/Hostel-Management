@@ -26,7 +26,7 @@ const parentsignUp = async (req, res) => {
         email: req.body.email,
         password: req.body.password,
         phoneNumber: req.body.phone,
-        selectedRollnos:req.body.RollNumber
+        
         
       });
       await newParent.save();
@@ -144,50 +144,50 @@ const createPayment = async (req, res) => {
 };
 
 
-// const getUserAttendanceList = async (req, res) => {
-//       try {
-//         const parentRollNumber = req.user ? req.user.rollno : null;
 
-//           const attendance = await Attendance.find({ RollNumber: parentRollNumber });
-//           res.status(200).json({ attendance });
-//       } catch (error) {
-//           console.error('Error fetching attendance list:', error.message);
-//           res.status(500).json({ message: 'Internal Server Error' });
-//       }
-//   };/
-// Your route for fetching attendance list based on RollNumber
-const getUserAttendanceList = async (req, res) => {
+
+
+
+
+const getAttendanceList = async (req, res) => {
   try {
-    const { RollNumber } = req.params;
-    // Assuming you have a model named 'User' for user details
-    const user = await User.findOne({ RollNumber });
-    if (user) {
-      // Assuming you have a model named 'Attendance' for attendance details
-      const attendanceList = await Attendance.find({ RollNumber });
-      res.status(200).json({ user, attendanceList });
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
+      const attendance = await Attendance.find();
+      res.status(200).json({ attendance });
   } catch (error) {
-    console.error('Error fetching user and attendance list:', error.message);
+      console.error('Error fetching attendance list:', error.message);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+const getAttendanceByRollNumber = async (req, res) => {
+  try {
+    const { rollNumber } = req.params;
+    console.log('Searching for attendance with RollNumber:', rollNumber);
+
+    const attendance = await Attendance.find({ RollNumber: rollNumber });
+    console.log('Attendance found:', attendance);
+
+    res.status(200).json({ attendance });
+  } catch (error) {
+    console.error('Error fetching attendance by roll number:', error.message);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
 
-const getUser= async (req, res) => {
+
+const getPaymentList = async (req,res)=>{
   try {
-    // Fetch all users from the User model
-    const users = await User.find({}, 'username RollNumber'); // Adjust fields as needed
-    
-    // Respond with the user data
-    res.status(200).json(users);
-  } catch (error) {
-    console.error('Error fetching users:', error.message);
+    const fees = await Payment.find();
+    res.status(200).json({ fees });
+} catch (error) {
+    console.error('Error fetching user list:', error.message);
     res.status(500).json({ message: 'Internal Server Error' });
-  }
-};
+}
+}
+
  
 module.exports={
     parentsignUp,parentLogin , getNotifications, parentHeader,
-    createPayment,getUserAttendanceList,getUser
+    createPayment,getAttendanceList,getAttendanceByRollNumber,getPaymentList
 }

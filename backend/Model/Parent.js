@@ -12,7 +12,7 @@ const parentSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     phoneNumber: { type: String,required:true },
-    selectedRollnos:{type:String,required:true},
+    
 
     
     

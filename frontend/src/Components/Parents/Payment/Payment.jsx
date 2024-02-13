@@ -3,11 +3,14 @@
 import React, { useState } from 'react';
 import { createPayment } from '../../../Service/ParentApi';
 import './payment.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const Payment = () => {
   const [amount, setAmount] = useState('');
   const [parentName, setParentName] = useState('');
   const [studentName, setStudentName] = useState('');
+  const Navigate=useNavigate()
 
   const handlePayment = async (e) => {
     try {
@@ -34,10 +37,8 @@ const Payment = () => {
         handler: function (response) {
           console.log('Payment success:', response);
 
-          alert('your payment for BackPack is successful');
-          alert(response.razorpay_payment_id);
-          alert(response.razorpay_order_id);
-          alert(response.razorpay_signature);
+          
+          Navigate('/parent/redirect')
         },
         prefill: {
           name: 'Backpack',

@@ -13,17 +13,7 @@ export const parentSignUp =async(parentDate)=>{
     }
 };
 
-// Service/ParentApi.js
-export const getUserAttendanceList = async (RollNumber) => {
-  try {
-    const response = await ParentInstances.get(`/Userattendencelist/${RollNumber}`);
-    console.log('Attendance Response:', response.data);
-    return response.data; // This line should be inside the try block
-  } catch (error) {
-    console.error('Error fetching Attendance list:', error.message);
-    throw error;
-  }
-};
+
 
 
 
@@ -53,7 +43,27 @@ export const createPayment = (amount, parentName, studentName) => {
     return ParentInstances.get('/parentheader');
   };
   
-  export const getUser = async ()=>{
-    return ParentInstances.get('/getuser')
-  }
+  export const getAttendanceList = async () => {
+    try {
+      const response = await ParentInstances.get('/attendanceList');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching Attendance list:', error.message);
+      throw error;
+    }
+  };
+ 
 
+  export const searchAttendanceByRollNumber = async (rollNumber) => {
+    try {
+      const response = await ParentInstances.get(`/searchattendance/${rollNumber}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error searching attendance by roll number:', error.message);
+      throw error;
+    }
+  };
+
+  export const getpaymentList =()=>{
+    return ParentInstances.get('/paymentList');
+  }

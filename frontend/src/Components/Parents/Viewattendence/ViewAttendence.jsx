@@ -1,61 +1,98 @@
-
 import React, { useEffect, useState } from 'react';
-import { getUserAttendanceList } from '../../../Service/ParentApi';
-import { useSelector } from 'react-redux';
-import { selectParent } from '../../../Features/setParent';
+import { getAttendanceList,searchAttendanceByRollNumber } from '../../../Service/ParentApi';
+import './viewattandence.css';
 
-const ViewAttendance = () => {
-  const [attendanceList, setAttendanceList] = useState([]);
-  const loggedInParent = useSelector(selectParent);
-
+const ViewAttendence = () => {
+  const [attendenceList, setAttendenceList] = useState([]);
+  const [searchRollNumber, setSearchRollNumber] = useState('');
+  const [filteredAttendance, setFilteredAttendance] = useState([]);
   const fetchAttendanceList = async () => {
     try {
-      console.log('Fetching attendance list for parent:', loggedInParent);
-
-      if (loggedInParent && loggedInParent.RollNumber) {
-        const response = await getUserAttendanceList(loggedInParent.RollNumber);
-        console.log('Attendance Response:', response);
-
-       
-        const attendance = response.attendance || [];
-        setAttendanceList(attendance);
-      } else {
-        console.warn('No logged-in parent information or RollNumber available');
-      }
+      const response = await getAttendanceList();
+      console.log('Attendance Response:', response);
+      const attendance = response.attendance || [];
+      setAttendenceList(attendance);
     } catch (error) {
       console.error('Error fetching attendance list:', error.message);
     }
   };
 
-  useEffect(() => {
-  console.log('Logged-in parent:', loggedInParent);
-  fetchAttendanceList();
-}, [loggedInParent]);
+  const handleSearch = async () => {
+    try {
+      const response = await searchAttendanceByRollNumber(searchRollNumber);
+      const foundAttendance = response.attendance || [];
+      setFilteredAttendance(foundAttendance);
+    } catch (error) {
+      console.error('Error searching attendance:', error.message);
+    }
+  };
 
+  useEffect(() => {
+    fetchAttendanceList();
+    
+  }, []);
 
   return (
-    <div className="attendance-list-container">
+    <div>
+    
+      
       <h2>Attendance List</h2>
-      <table className="attendance-table">
+      <div>
+        <input
+          type="text"
+          placeholder="Enter Roll Number"
+          value={searchRollNumber}
+          onChange={(e) => setSearchRollNumber(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      {filteredAttendance.length > 0 && (
+      <div>
+        <h2>Search Results</h2>
+        <table className="filtered-attendence-table">
+          <thead>
+            <tr>
+              <th className="student-name-header">Student Name</th>
+              <th className="student-name-header">Roll Number</th>
+              <th className="date-time-header">Date/Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredAttendance
+              .filter((attendance) => attendance.isPresent)
+              .map((attendance) => (
+                <tr key={attendance._id}>
+                  <td className="student-name-cell">{attendance.studentName}</td>
+                  <td className="student-name-cell">{attendance.RollNumber}</td>
+                  <td className="date-time-cell">{new Date(attendance.date).toLocaleString()}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+      <table className="attendence-table">
         <thead>
           <tr>
             <th className="student-name-header">Student Name</th>
-            <th className="roll-number-header">Roll Number</th>
+            <th className="student-name-header">Roll Number</th>
             <th className="date-time-header">Date/Time</th>
           </tr>
         </thead>
         <tbody>
-          {attendanceList.map((attendance) => (
-            <tr key={attendance._id}>
-              <td className="student-name-cell">{attendance.studentName}</td>
-              <td className="roll-number-cell">{attendance.RollNumber}</td>
-              <td className="date-time-cell">{new Date(attendance.date).toLocaleString()}</td>
-            </tr>
-          ))}
+          {attendenceList
+            .filter((attendance) => attendance.isPresent)
+            .map((attendance) => (
+              <tr key={attendance._id}>
+                <td className="student-name-cell">{attendance.studentName}</td>
+                <td className="student-name-cell">{attendance.RollNumber}</td>
+                <td className="date-time-cell">{new Date(attendance.date).toLocaleString()}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
   );
-};
+}
 
-export default ViewAttendance;
+export default ViewAttendence;

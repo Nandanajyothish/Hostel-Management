@@ -10,7 +10,7 @@ const maxAge=3*24*60*60;
 require('dotenv').config();
 
 
-// jwt
+
 const createAdminToken = (id) => {
     return jwt.sign({ id }, process.env.ADMIN_SECRET_KEY, {
       expiresIn: maxAge,
@@ -43,8 +43,7 @@ const adminLogin = async (req, res) => {
             res.json({ message: 'Admin not found', status: false });
             return;  
         }
-        // console.log("Admin login successful", token);
-        // res.status(200).json({ message: 'Login successful', admin, token });
+        
     } catch (error) {
         console.error('Error logging in:', error.message);
         res.status(500).json({ message: 'Internal Server Error' });

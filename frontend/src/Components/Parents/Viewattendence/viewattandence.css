@@ -1,0 +1,60 @@
+.filtered-attendence-table{
+   
+        width: 50%; /* Set a fixed or percentage-based width */
+        border-collapse: collapse;
+        margin-top: 10%;
+        margin-left: 10%;
+        margin-left: 25%;
+      
+
+}
+.attendence-list-container {
+    margin: 20px;
+  }
+  
+  .attendence-table {
+    width: 80%; /* Set a fixed or percentage-based width */
+    border-collapse: collapse;
+    margin-top: 10%;
+    margin-left: 10%;
+  }
+  
+  .student-name-header,
+  .date-time-header {
+    background-color: #033929;
+    color: #fff;
+    font-weight: bold;
+    padding: 8px;
+    
+  }
+  
+  .student-name-cell,
+  .date-time-cell {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px; /* Adjust font size */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  @media (max-width: 600px) {
+    .attendence-table {
+      width: 90%; 
+    }
+  
+    .student-name-header,
+    .date-time-header,
+    .student-name-cell,
+    .date-time-cell {
+      font-size: 12px; 
+       
+    }
+  
+  }@media only screen and (max-width: 768px) {
+    .filtered-attendence-table {
+      width: 100%; /* Adjust the width for smaller screens */
+      margin-left: 10%; /* Adjust margin for smaller screens */
+    }
+  }

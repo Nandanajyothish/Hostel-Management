@@ -5,7 +5,7 @@ import Navbar from '../../Components/Admin/NavBar/Navbar';
 const AddwardenPage = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar/><br/><br/><br/>
       <AddWarden/>
     </div>
   );

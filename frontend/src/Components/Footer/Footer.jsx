@@ -1,39 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './footer.css'
+
 const Footer = () => {
   return (
     <div>
-       <footer>
-
-<div class="footer">
-<div class="row">
-<ul>
-<li className='hi'><i class="fa-brands fa-facebook"></i></li>
-<li className='hi'><i class="fa-brands fa-instagram"></i></li>
-<li className='hi'><i class="fa-brands fa-twitter"></i></li>
-</ul>
-
-</div>
-
-
-<div class="row">
-<ul>
-<li><Link href="/">Home</Link></li>
-<li><Link href="/">About</Link></li>
-<li><Link href="/">Contact us</Link></li>
-<li><Link href="/">Our Services</Link></li>
-<li><Link href="/">Privacy Policy</Link></li>
-
-</ul>
-</div><br/>
-
-
-<div >&copy;<span id="year">
-   </span><span> Your Company Name. All rights reserved.</span>
-   </div>
-   </div>
-   </footer>
+      <footer>
+      <div className="footer-content">
+        <h3>For Enquiries</h3><br/><br/>
+        <ul className='aa'>
+          <li className='aa'><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;Contact&nbsp;&nbsp;:&nbsp;&nbsp;0000000000</li><br/>
+          <li className='aa'><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;Email&nbsp;&nbsp;:&nbsp;&nbsp;backpack@gmail.com</li><br/>
+          
+        </ul>
+       
+      </div>
+      <div className="footer-bottom">
+        <p>
+          copyright &copy; <a href="#"> BackPack</a>{" "}
+        </p>
+       
+      </div>
+    </footer> 
     </div>
   );
 }
