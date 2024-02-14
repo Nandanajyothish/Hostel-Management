@@ -10,21 +10,21 @@ const Home = () => {
   return (
     <div className='container'>
       <div className='home-container'>
-        <h1>WELCOME</h1>
+        <h1 className='hostel'> WELCOME TO BACK-PACK</h1>
         <div className='home-buttons'>
-          <button type='button' onClick={() => navigate('warden/login')}>
+          <button type='button' className='mainb' onClick={() => navigate('warden/login')}>
             Warden Login
           </button>
           <br /><br />
-          <button type='button' onClick={() => navigate('admin/adminlogin')}>
+          <button type='button' className='mainb' onClick={() => navigate('admin/adminlogin')}>
             Admin Login
           </button>
           <br /><br />
-          <button type='button' onClick={() => navigate('/userlogin')}>
+          <button type='button' className='mainb' onClick={() => navigate('/userlogin')}>
             User Login
           </button>
           <br /><br />
-          <button type='button' onClick={() => navigate('parent/login')}>
+          <button type='button' className='mainb' onClick={() => navigate('parent/login')}>
             Parent Login
           </button>
           <br />

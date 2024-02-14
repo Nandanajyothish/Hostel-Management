@@ -4,23 +4,17 @@ import './footer.css'
 const Footer = () => {
   return (
     <div>
-      <footer>
-      <div className="footer-content">
-        <h3>For Enquiries</h3><br/><br/>
-        <ul className='aa'>
-          <li className='aa'><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;Contact&nbsp;&nbsp;:&nbsp;&nbsp;0000000000</li><br/>
-          <li className='aa'><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;Email&nbsp;&nbsp;:&nbsp;&nbsp;backpack@gmail.com</li><br/>
-          
-        </ul>
-       
+       <footer className='main-footer'>
+      <div className='footer-content'>
+        <div className='contact-info'>
+          <p>Contact Number: +1 123 456 7890</p>
+          <p>Email: example@example.com</p>
+        </div>
+        <div className='copyright'>
+          <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+        </div>
       </div>
-      <div className="footer-bottom">
-        <p>
-          copyright &copy; <a href="#"> BackPack</a>{" "}
-        </p>
-       
-      </div>
-    </footer> 
+    </footer>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAdminUserList } from '../../../Service/AdminApi';
 
+import './userlist.css'
 const UserList = () => {
   const [userList, setUserList] = useState([]);
 
